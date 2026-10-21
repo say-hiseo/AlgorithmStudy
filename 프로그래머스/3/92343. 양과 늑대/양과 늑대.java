@@ -19,8 +19,9 @@ class Solution {
     
     static void dfs(int sheep, int wolf, ArrayList<Integer> cur){
         answer = Math.max(answer, sheep);
-        for(int c : cur){
-            if(sheep <= wolf) continue;
+        // 방문한 뒤의 상태 검사
+        if(sheep <= wolf) return;
+        for(int c : cur){ // 다음에 c를 방문한다면?
             ArrayList<Integer> next = new ArrayList<>(cur);
             next.remove(Integer.valueOf(c));
             for(int n : lists.get(c)) next.add(n);
